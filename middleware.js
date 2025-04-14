@@ -15,6 +15,7 @@ module.exports.isLoggedIn = (req, res, next) => {
 module.exports.saveRedirectUrl = (req, res, next) => {
     if (req.session.redirectUrl) {
         res.locals.redirectUrl = req.session.redirectUrl; // Store URL in locals for use in templates if needed
+        delete req.session.redirectUrl; // Clear the stored redirect URL after use
     }
     next();
 };
@@ -30,7 +31,8 @@ module.exports.isOwner = async (req, res, next) => {
             return res.redirect("/listings");
         }
 
-        if (!listing.owner.equals(req.user._id)) {  
+        // ✅ Ensure we compare ObjectIds as strings
+        if (!listing.owner.equals(req.user._id.toString())) {  
             req.flash("error", "You don't have permission to edit this listing!");
             return res.redirect(`/listings/${id}`);
         }
@@ -54,8 +56,8 @@ module.exports.isReviewAuthor = async (req, res, next) => {
             return res.redirect("/listings");
         }
 
-        // ✅ Check if the logged-in user is the review author
-        if (!review.author.equals(req.user._id)) {  
+        // ✅ Ensure we compare ObjectIds as strings
+        if (!review.author.equals(req.user._id.toString())) {  
             req.flash("error", "You don't have permission to delete this review!");
             return res.redirect("back");
         }
