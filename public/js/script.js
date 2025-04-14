@@ -96,3 +96,11 @@ const filtersWrapper = document.getElementById("filtersWrapper");
       });
     });
   });
+  const overlay = document.getElementById('overlay-white-screen');
+
+  document.querySelectorAll('.nav-link[href="/signup"], .nav-link[href="/login"], .nav-link[href="/listings/new"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default navigation
+      overlay.style.display = 'flex';
+    });
+  });
