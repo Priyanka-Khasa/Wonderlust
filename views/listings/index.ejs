@@ -1,0 +1,62 @@
+<% layout("layouts/boilerplate") %>
+
+<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+  
+  
+  <div id="filters-container">
+    <div class="arrow-buttons">
+      <button class="arrow-btn" onclick="scrollLeft()"><i class="fa-solid fa-arrow-left"></i></button>
+    </div>
+
+    <div class="filters-wrapper" id="filtersWrapper">
+      <div id="filters">
+        <div class="filter"><div><i class="fa-solid fa-person-swimming"></i></div><p>Amazing Pools</p></div>
+        <div class="filter"><div><i class="fa-solid fa-bed"></i></div><p>Rooms</p></div>
+        <div class="filter"><div><i class="fa-solid fa-fire"></i></div><p>Trending</p></div>
+        <div class="filter"><div><i class="fa-solid fa-money-bill-wheat"></i></div><p>Farms</p></div>
+        <div class="filter"><div><i class="fa-solid fa-umbrella-beach"></i></div><p>Beach</p></div>
+        <div class="filter"><div><i class="fa-solid fa-city"></i></div><p>Big House</p></div>
+        <div class="filter"><div><i class="fa-solid fa-snowflake"></i></div><p>Artic</p></div>
+        <div class="filter"><div><i class="fa-solid fa-water"></i></div><p>Lake</p></div>
+        <div class="filter"><div><i class="fa-solid fa-mountain-city"></i></div><p>Iconic Cities</p></div>
+        <div class="filter"><div><i class="fa-solid fa-tents"></i></div><p>Camping</p></div>
+        <div class="filter"><div><i class="fa-solid fa-igloo"></i></div><p>Domes</p></div>
+        <div class="filter"><div><i class="fa-solid fa-ship"></i></div><p>HouseBoats</p></div>
+
+      </div>
+    </div>
+
+    <div class="arrow-buttons">
+      <button class="arrow-btn" onclick="scrollRight()"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <div class="tax-toggle">
+    <label class="switch">
+      <input type="checkbox" id="taxToggle" />
+      <span class="slider"></span>
+    </label>
+    <span>Display total before taxes</span>
+  </div>
+</div>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+  <% for(let listing of allListings) { %>
+    <a href="/listings/<%= listing._id %>" class="listing_link">
+      <div class="card col listing-card">
+        <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height:20rem">
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b> <br />
+            &#8377; <%= listing.price.toLocaleString("en-IN") %>/ night 
+            <i class="tax-info">&nbsp; &nbsp; +18% GST</i>
+            
+          </p>
+        </div>
+      </div>
+    </a>
+  <% } %>
+</div>
+
+
