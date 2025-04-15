@@ -100,7 +100,10 @@ const filtersWrapper = document.getElementById("filtersWrapper");
 
   document.querySelectorAll('.nav-link[href="/signup"], .nav-link[href="/login"], .nav-link[href="/listings/new"]').forEach(link => {
     link.addEventListener('click', function(e) {
-      e.preventDefault(); // Prevent default navigation
       overlay.style.display = 'flex';
+      setTimeout(() => {
+        window.location.href = this.getAttribute('href');
+      }, 300); // Add slight delay for effect
     });
   });
+  
