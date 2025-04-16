@@ -106,4 +106,8 @@ const filtersWrapper = document.getElementById("filtersWrapper");
       }, 300); // Add slight delay for effect
     });
   });
-  
+  function toggleHeart(icon) {
+    icon.classList.toggle("fa-solid"); // filled heart
+    icon.classList.toggle("fa-regular"); // outline heart
+    icon.classList.toggle("text-danger"); // red color
+  }
