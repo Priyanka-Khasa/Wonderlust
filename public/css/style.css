@@ -411,3 +411,6 @@ body {
 .favorite-icon.text-danger {
   color: #ff385c;
 }
+.card {
+  border: 1px solid red !important; /* To visualize card boundaries */
+}
