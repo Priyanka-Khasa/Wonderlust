@@ -393,3 +393,17 @@ body {
   color: #ff385c;
   font-weight: bold;
 }
+.favorite-icon {
+  font-size: 1.4rem;
+  color: #555;
+  background-color: white;
+  border-radius: 50%;
+  padding: 6px;
+  transition: color 0.3s ease;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.favorite-icon:hover {
+  color: #ff385c;
+  cursor: pointer;
+}
