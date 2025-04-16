@@ -204,14 +204,21 @@ body {
 }
 .tax-toggle {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  white-space: nowrap;
+  overflow: hidden;
   border: 1px solid black;
   border-radius: 1rem;
   padding: 1rem;
-  gap: 10px;
+  font-size: 14px;
   margin-left: auto;
-  white-space: nowrap;
 }
+
+/* Toggle Switch */
 .switch {
   position: relative;
   display: inline-block;
@@ -362,24 +369,26 @@ body {
     width: 100%;
     margin: 0;
   }
-  .tax-toggle {
-    width: 100%;
-    margin: 0.5rem 0;
-    padding: 0.8rem;
-    font-size: 14px;
-  }
 }
 
 @media (max-width: 576px) {
-  .search-section {
-    padding: 6px 8px;
-    font-size: 13px;
-    max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
   .search-bar {
-    height: 42px;
-    padding: 0 12px;
+    height: 38px;
+    padding: 0 10px;
   }
+  .search-section {
+    font-size: 12px;
+    padding: 6px 8px;
+    max-width: 90px;
+  }
+  .search-btn {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Navbar Toggle White Background */
+.offcanvas.offcanvas-end {
+  background-color: white !important;
+  padding: 1rem;
 }
