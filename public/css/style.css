@@ -271,8 +271,11 @@ body {
 .search-bar-container {
   position: absolute;
   left: 50%;
+  top: 50%;
   transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: fit-content;
+  z-index: 20;
 }
 .search-bar {
   display: flex;
@@ -345,11 +348,11 @@ body {
 /* Responsive Design */
 @media (max-width: 992px) {
   .search-bar-container {
-    position: static;
-    transform: none;
-    order: 3;
-    width: 100%;
-    margin: 12px 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
   }
   .search-bar {
     width: 100%;
@@ -383,7 +386,18 @@ body {
 /* Mobile Menu Background */
 .offcanvas.offcanvas-end {
   background-color: white !important;
-  padding: 1rem;
+  padding: 2rem 1.5rem;
+  width: 280px;
+  font-size: 16px;
+}
+.offcanvas-body .nav-link {
+  color: black;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.offcanvas-body .nav-link:hover {
+  color: #ff385c;
 }
 .active-filter {
   color: #ff385c;
