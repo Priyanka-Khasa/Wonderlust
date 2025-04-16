@@ -6,8 +6,9 @@ module.exports.listingSchema = Joi.object({
     description: Joi.string().required(),
     location: Joi.string().required(),
     country: Joi.string().required(),
-    price: Joi.number().min(0).required(), // ✅ Corrected `.min(0)`
-    image: Joi.string().allow("", null),
+    price: Joi.number().min(0).required(),
+    category: Joi.string().required(), // ✅ Add this line
+    image: Joi.string().allow("", null), // Optional if using Cloudinary
   }).required(),
 });
 
