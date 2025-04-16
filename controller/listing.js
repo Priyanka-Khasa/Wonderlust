@@ -3,30 +3,37 @@ const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
-// ✅ Allowed categories (must match enum values exactly)
+// ✅ Allowed categories
 const allowedCategories = [
   "Amazing Pools", "Rooms", "Trending", "Farms", "Beach", "Big House",
   "Artic", "Lake", "Iconic Cities", "Camping", "Domes", "HouseBoats"
 ];
 
-// ✅ INDEX ROUTE – Show all or filtered listings
+// ✅ INDEX ROUTE – Show all, filter by category or search query
 module.exports.index = async (req, res) => {
   try {
-    const { category } = req.query;
-    let allListings;
+    const { category, q } = req.query;
+    let filter = {};
 
     if (category && allowedCategories.includes(category)) {
-      allListings = await Listing.find({ category });
-    } else {
-      allListings = await Listing.find({});
+      filter.category = category;
     }
 
-    // ✅ Send currentCategory to EJS to highlight selected icon
+    if (q) {
+      // Match search text in title or location (case-insensitive)
+      filter.$or = [
+        { title: new RegExp(q, "i") },
+        { location: new RegExp(q, "i") }
+      ];
+    }
+
+    const allListings = await Listing.find(filter);
+
     res.render("listings/index", {
       allListings,
-      currentCategory: category || null
+      currentCategory: category || null,
+      searchTerm: q || ""
     });
-
   } catch (error) {
     console.error(error);
     req.flash("error", "Something went wrong while fetching listings.");
@@ -55,7 +62,7 @@ module.exports.showListing = async (req, res) => {
   }
 };
 
-// ✅ CREATE ROUTE – Add New Listing
+// ✅ CREATE ROUTE
 module.exports.createListing = async (req, res) => {
   try {
     const geoData = await geocodingClient
@@ -105,7 +112,7 @@ module.exports.renderEditForm = async (req, res) => {
   }
 };
 
-// ✅ UPDATE ROUTE – Modify Listing
+// ✅ UPDATE ROUTE
 module.exports.updateListing = async (req, res) => {
   try {
     let { id } = req.params;

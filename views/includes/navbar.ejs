@@ -11,16 +11,18 @@
       
       <!-- Centered Search Bar -->
       <div class="search-bar-container mx-auto">
-        <div class="search-bar">
-          <div class="search-section" id="location">Anywhere</div>
-          <div class="search-divider"></div>
-          <div class="search-section" id="dates">Any week</div>
-          <div class="search-divider"></div>
-          <div class="search-section" id="guests">Add guests</div>
-          <button class="search-btn">
+        <form class="search-bar" action="/listings" method="GET">
+          <input
+            type="text"
+            name="q"
+            class="search-section search-input"
+            placeholder="Search location or title"
+            required
+          />
+          <button class="search-btn" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
-        </div>
+        </form>
       </div>
       
       <div class="navbar-nav ms-auto">
