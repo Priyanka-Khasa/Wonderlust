@@ -31,10 +31,8 @@
     </div>
   </div>
 
-  <!-- Toggle -->
-  <!-- Listings Grid -->
 <!-- Listings Grid -->
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 g-4">
   <% for(let listing of allListings) { %>
     <div class="col">
       <div class="card listing-card position-relative h-100">
@@ -43,18 +41,24 @@
         <div
           class="position-absolute top-0 end-0 p-2"
           onclick="event.stopPropagation(); toggleHeart(this);"
-          style="z-index: 1;"
+          style="z-index: 10;"
         >
           <i class="fa-regular fa-heart favorite-icon"></i>
         </div>
 
+        <!-- Clickable Link starts BELOW the heart -->
         <a href="/listings/<%= listing._id %>" class="listing_link text-decoration-none">
-          <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem; object-fit: cover;">
+          <img
+            src="<%= listing.image.url %>"
+            class="card-img-top"
+            alt="listing_image"
+            style="height: 16rem; object-fit: cover;"
+          />
           <div class="card-body">
-            <p class="card-text mb-0">
+            <p class="card-text mb-1">
               <b><%= listing.title %></b>
             </p>
-            <p class="mb-0">
+            <p class="mb-0 text-muted">
               ₹<%= listing.price.toLocaleString("en-IN") %>/night
               <i class="tax-info"> +18% GST</i>
             </p>
