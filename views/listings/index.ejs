@@ -32,35 +32,23 @@
   </div>
 
 <!-- Listings Grid -->
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 g-4">
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-4 mt-3">
   <% for(let listing of allListings) { %>
     <div class="col">
-      <div class="card listing-card position-relative h-100">
-
-        <!-- ❤️ Heart Icon -->
-        <div
-          class="position-absolute top-0 end-0 p-2"
-          onclick="event.stopPropagation(); toggleHeart(this);"
-          style="z-index: 10;"
-        >
+      <div class="card listing-card h-100 position-relative overflow-hidden">
+        <!-- Heart Icon -->
+        <div class="position-absolute top-0 end-0 p-2" onclick="event.stopPropagation(); toggleHeart(this);" style="z-index: 10;">
           <i class="fa-regular fa-heart favorite-icon"></i>
         </div>
-
-        <!-- Clickable Link starts BELOW the heart -->
-        <a href="/listings/<%= listing._id %>" class="listing_link text-decoration-none">
-          <img
-            src="<%= listing.image.url %>"
-            class="card-img-top"
-            alt="listing_image"
-            style="height: 16rem; object-fit: cover;"
-          />
+        
+        <!-- Card Content -->
+        <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+          <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 16rem; object-fit: cover;">
           <div class="card-body">
-            <p class="card-text mb-1">
-              <b><%= listing.title %></b>
-            </p>
-            <p class="mb-0 text-muted">
+            <p class="card-text mb-1 fw-bold"><%= listing.title %></p>
+            <p class="mb-0">
               ₹<%= listing.price.toLocaleString("en-IN") %>/night
-              <i class="tax-info"> +18% GST</i>
+              <span class="tax-info" style="display: none;">+18% GST</span>
             </p>
           </div>
         </a>
