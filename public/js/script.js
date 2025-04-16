@@ -106,8 +106,8 @@ const filtersWrapper = document.getElementById("filtersWrapper");
       }, 300); // Add slight delay for effect
     });
   });
-  function toggleHeart(div) {
-    const icon = div.querySelector("i");
+  function toggleHeart(el) {
+    const icon = el.querySelector("i");
     icon.classList.toggle("fa-solid");
     icon.classList.toggle("fa-regular");
     icon.classList.toggle("text-danger");
