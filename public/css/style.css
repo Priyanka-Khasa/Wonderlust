@@ -411,6 +411,55 @@ body {
 .favorite-icon.text-danger {
   color: #ff385c;
 }
-.card {
-  border: 1px solid red !important; /* To visualize card boundaries */
+/* ✅ Fix Bootstrap Grid Overflow & Card Width */
+.row {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.col {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.listing-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ✅ Ensure images inside cards are not stretched or misaligned */
+.card-img-top {
+  object-fit: cover;
+  width: 100%;
+  height: 16rem; /* fixed height for card image */
+  border-radius: 12px 12px 0 0;
+  display: block;
+}
+
+/* ✅ Fix unexpected card shrinking / text overflow */
+.card-body {
+  flex-grow: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-text {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+/* ✅ Minor padding fix for inner anchor */
+a.text-decoration-none.text-dark {
+  display: block;
+  height: 100%;
 }
