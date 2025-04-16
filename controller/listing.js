@@ -3,6 +3,11 @@ const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
+// ✅ Allowed categories (must match enum values exactly)
+const allowedCategories = [
+  "Amazing Pools", "Rooms", "Trending", "Farms", "Beach", "Big House",
+  "Artic", "Lake", "Iconic Cities", "Camping", "Domes", "HouseBoats"
+];
 
 // ✅ INDEX ROUTE – Show all or filtered listings
 module.exports.index = async (req, res) => {
@@ -10,7 +15,7 @@ module.exports.index = async (req, res) => {
     const { category } = req.query;
     let allListings;
 
-    if (category) {
+    if (category && allowedCategories.includes(category)) {
       allListings = await Listing.find({ category });
     } else {
       allListings = await Listing.find({});
@@ -23,7 +28,6 @@ module.exports.index = async (req, res) => {
     res.redirect("/");
   }
 };
-
 
 // ✅ SHOW ROUTE – Single Listing
 module.exports.showListing = async (req, res) => {
@@ -46,7 +50,6 @@ module.exports.showListing = async (req, res) => {
   }
 };
 
-
 // ✅ CREATE ROUTE – Add New Listing
 module.exports.createListing = async (req, res) => {
   try {
@@ -59,7 +62,6 @@ module.exports.createListing = async (req, res) => {
 
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
-
     newListing.geometry = geoData.body.features[0].geometry;
 
     if (req.file) {
@@ -79,7 +81,6 @@ module.exports.createListing = async (req, res) => {
   }
 };
 
-
 // ✅ EDIT FORM ROUTE
 module.exports.renderEditForm = async (req, res) => {
   try {
@@ -98,7 +99,6 @@ module.exports.renderEditForm = async (req, res) => {
     res.redirect("/listings");
   }
 };
-
 
 // ✅ UPDATE ROUTE – Modify Listing
 module.exports.updateListing = async (req, res) => {
@@ -129,7 +129,6 @@ module.exports.updateListing = async (req, res) => {
     res.redirect("/listings");
   }
 };
-
 
 // ✅ DELETE ROUTE
 module.exports.deleteListing = async (req, res) => {
