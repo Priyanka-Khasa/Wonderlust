@@ -175,6 +175,13 @@ body {
   font-size: 12px;
   min-width: 70px;
   transition: transform 0.2s ease, color 0.2s ease;
+  text-decoration: none !important;  /* 🔥 No underline */
+  color: black;
+}
+.filter i,
+.filter p {
+  color: black;                      /* ✅ Icon & text both black */
+  transition: color 0.3s ease;
 }
 .filter:hover {
   opacity: 1;
