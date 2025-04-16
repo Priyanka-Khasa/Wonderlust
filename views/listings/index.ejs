@@ -10,22 +10,20 @@
 
     <div class="filters-wrapper" id="filtersWrapper">
       <div id="filters">
-
-        <!-- ✅ Category Filter Links -->
-        <a href="/listings?category=Amazing Pools" class="filter"><i class="fa-solid fa-person-swimming"></i><p>Amazing Pools</p></a>
-        <a href="/listings?category=Rooms" class="filter"><i class="fa-solid fa-bed"></i><p>Rooms</p></a>
-        <a href="/listings?category=Trending" class="filter"><i class="fa-solid fa-fire"></i><p>Trending</p></a>
-        <a href="/listings?category=Farms" class="filter"><i class="fa-solid fa-money-bill-wheat"></i><p>Farms</p></a>
-        <a href="/listings?category=Beach" class="filter"><i class="fa-solid fa-umbrella-beach"></i><p>Beach</p></a>
-        <a href="/listings?category=Big House" class="filter"><i class="fa-solid fa-city"></i><p>Big House</p></a>
-        <a href="/listings?category=Artic" class="filter"><i class="fa-solid fa-snowflake"></i><p>Artic</p></a>
-        <a href="/listings?category=Lake" class="filter"><i class="fa-solid fa-water"></i><p>Lake</p></a>
-        <a href="/listings?category=Iconic Cities" class="filter"><i class="fa-solid fa-mountain-city"></i><p>Iconic Cities</p></a>
-        <a href="/listings?category=Camping" class="filter"><i class="fa-solid fa-tents"></i><p>Camping</p></a>
-        <a href="/listings?category=Domes" class="filter"><i class="fa-solid fa-igloo"></i><p>Domes</p></a>
-        <a href="/listings?category=HouseBoats" class="filter"><i class="fa-solid fa-ship"></i><p>HouseBoats</p></a>
-
+        <a href="/listings?category=Amazing Pools" class="filter <%= currentCategory === 'Amazing Pools' ? 'active-filter' : '' %>"><i class="fa-solid fa-person-swimming"></i><p>Amazing Pools</p></a>
+        <a href="/listings?category=Rooms" class="filter <%= currentCategory === 'Rooms' ? 'active-filter' : '' %>"><i class="fa-solid fa-bed"></i><p>Rooms</p></a>
+        <a href="/listings?category=Trending" class="filter <%= currentCategory === 'Trending' ? 'active-filter' : '' %>"><i class="fa-solid fa-fire"></i><p>Trending</p></a>
+        <a href="/listings?category=Farms" class="filter <%= currentCategory === 'Farms' ? 'active-filter' : '' %>"><i class="fa-solid fa-money-bill-wheat"></i><p>Farms</p></a>
+        <a href="/listings?category=Beach" class="filter <%= currentCategory === 'Beach' ? 'active-filter' : '' %>"><i class="fa-solid fa-umbrella-beach"></i><p>Beach</p></a>
+        <a href="/listings?category=Big House" class="filter <%= currentCategory === 'Big House' ? 'active-filter' : '' %>"><i class="fa-solid fa-city"></i><p>Big House</p></a>
+        <a href="/listings?category=Artic" class="filter <%= currentCategory === 'Artic' ? 'active-filter' : '' %>"><i class="fa-solid fa-snowflake"></i><p>Artic</p></a>
+        <a href="/listings?category=Lake" class="filter <%= currentCategory === 'Lake' ? 'active-filter' : '' %>"><i class="fa-solid fa-water"></i><p>Lake</p></a>
+        <a href="/listings?category=Iconic Cities" class="filter <%= currentCategory === 'Iconic Cities' ? 'active-filter' : '' %>"><i class="fa-solid fa-mountain-city"></i><p>Iconic Cities</p></a>
+        <a href="/listings?category=Camping" class="filter <%= currentCategory === 'Camping' ? 'active-filter' : '' %>"><i class="fa-solid fa-tents"></i><p>Camping</p></a>
+        <a href="/listings?category=Domes" class="filter <%= currentCategory === 'Domes' ? 'active-filter' : '' %>"><i class="fa-solid fa-igloo"></i><p>Domes</p></a>
+        <a href="/listings?category=HouseBoats" class="filter <%= currentCategory === 'HouseBoats' ? 'active-filter' : '' %>"><i class="fa-solid fa-ship"></i><p>HouseBoats</p></a>
       </div>
+      
     </div>
 
     <div class="arrow-buttons">

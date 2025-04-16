@@ -21,7 +21,12 @@ module.exports.index = async (req, res) => {
       allListings = await Listing.find({});
     }
 
-    res.render("listings/index", { allListings });
+    // ✅ Send currentCategory to EJS to highlight selected icon
+    res.render("listings/index", {
+      allListings,
+      currentCategory: category || null
+    });
+
   } catch (error) {
     console.error(error);
     req.flash("error", "Something went wrong while fetching listings.");
