@@ -35,6 +35,11 @@ const listingSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
     ref: "User",
+  },
+  category: {
+    type: String,
+    enum: ["Amazing Pools", "Rooms", "Trending", "Farms", "Beach", "Big House", "Artic", "Lake","Iconic Cities","Camping","Domes","HouseBoats"], // add all you want
+    required: true,
   }
 });
 
@@ -44,6 +49,7 @@ listingSchema.post("findOneAndDelete", async (listing) => {
     await Review.deleteMany({ _id: { $in: listing.reviews } });
   }
 });
+
 
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;

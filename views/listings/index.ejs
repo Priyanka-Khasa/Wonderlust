@@ -1,8 +1,8 @@
 <% layout("layouts/boilerplate") %>
 
 <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-  
-  
+
+  <!-- Filter Icons -->
   <div id="filters-container">
     <div class="arrow-buttons">
       <button class="arrow-btn" onclick="scrollLeft()"><i class="fa-solid fa-arrow-left"></i></button>
@@ -10,18 +10,20 @@
 
     <div class="filters-wrapper" id="filtersWrapper">
       <div id="filters">
-        <div class="filter"><div><i class="fa-solid fa-person-swimming"></i></div><p>Amazing Pools</p></div>
-        <div class="filter"><div><i class="fa-solid fa-bed"></i></div><p>Rooms</p></div>
-        <div class="filter"><div><i class="fa-solid fa-fire"></i></div><p>Trending</p></div>
-        <div class="filter"><div><i class="fa-solid fa-money-bill-wheat"></i></div><p>Farms</p></div>
-        <div class="filter"><div><i class="fa-solid fa-umbrella-beach"></i></div><p>Beach</p></div>
-        <div class="filter"><div><i class="fa-solid fa-city"></i></div><p>Big House</p></div>
-        <div class="filter"><div><i class="fa-solid fa-snowflake"></i></div><p>Artic</p></div>
-        <div class="filter"><div><i class="fa-solid fa-water"></i></div><p>Lake</p></div>
-        <div class="filter"><div><i class="fa-solid fa-mountain-city"></i></div><p>Iconic Cities</p></div>
-        <div class="filter"><div><i class="fa-solid fa-tents"></i></div><p>Camping</p></div>
-        <div class="filter"><div><i class="fa-solid fa-igloo"></i></div><p>Domes</p></div>
-        <div class="filter"><div><i class="fa-solid fa-ship"></i></div><p>HouseBoats</p></div>
+
+        <!-- ✅ Category Filter Links -->
+        <a href="/listings?category=Amazing Pools" class="filter"><i class="fa-solid fa-person-swimming"></i><p>Amazing Pools</p></a>
+        <a href="/listings?category=Rooms" class="filter"><i class="fa-solid fa-bed"></i><p>Rooms</p></a>
+        <a href="/listings?category=Trending" class="filter"><i class="fa-solid fa-fire"></i><p>Trending</p></a>
+        <a href="/listings?category=Farms" class="filter"><i class="fa-solid fa-money-bill-wheat"></i><p>Farms</p></a>
+        <a href="/listings?category=Beach" class="filter"><i class="fa-solid fa-umbrella-beach"></i><p>Beach</p></a>
+        <a href="/listings?category=Big House" class="filter"><i class="fa-solid fa-city"></i><p>Big House</p></a>
+        <a href="/listings?category=Artic" class="filter"><i class="fa-solid fa-snowflake"></i><p>Artic</p></a>
+        <a href="/listings?category=Lake" class="filter"><i class="fa-solid fa-water"></i><p>Lake</p></a>
+        <a href="/listings?category=Iconic Cities" class="filter"><i class="fa-solid fa-mountain-city"></i><p>Iconic Cities</p></a>
+        <a href="/listings?category=Camping" class="filter"><i class="fa-solid fa-tents"></i><p>Camping</p></a>
+        <a href="/listings?category=Domes" class="filter"><i class="fa-solid fa-igloo"></i><p>Domes</p></a>
+        <a href="/listings?category=HouseBoats" class="filter"><i class="fa-solid fa-ship"></i><p>HouseBoats</p></a>
 
       </div>
     </div>
@@ -31,6 +33,7 @@
     </div>
   </div>
 
+  <!-- Toggle -->
   <div class="tax-toggle">
     <label class="switch">
       <input type="checkbox" id="taxToggle" />
@@ -40,6 +43,7 @@
   </div>
 </div>
 
+<!-- Listings Grid -->
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
   <% for(let listing of allListings) { %>
     <a href="/listings/<%= listing._id %>" class="listing_link">
@@ -51,12 +55,9 @@
             <b><%= listing.title %></b> <br />
             &#8377; <%= listing.price.toLocaleString("en-IN") %>/ night 
             <i class="tax-info">&nbsp; &nbsp; +18% GST</i>
-            
           </p>
         </div>
       </div>
     </a>
   <% } %>
 </div>
-
-
